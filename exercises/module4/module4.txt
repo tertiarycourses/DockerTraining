@@ -1,0 +1,22 @@
+# Docker Essential Training
+# Module 4: Build Docker Files
+
+# Steps to create Docker file
+mkdir example
+cd example
+
+nano Dockerfile
+
+FROM debian:sid
+RUN echo "building simple docker image"
+CMD echo "Hello Container"
+
+docker build -t hello .
+
+docker run hello
+
+# Exercise
+FROM debian:sid
+RUN apt-get -y update 
+RUN apt-get install nano
+CMD ["/bin/nano", "/tmp/notes"]

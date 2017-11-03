@@ -1,0 +1,64 @@
+# Docker Essential Training
+# Module 2: Docker Images and Containers
+
+
+# Run a container from image
+docker run hello-world
+
+# Check docker images
+docker images
+
+# Duplicating image
+docker tag dea1945146b9 test3
+
+# Exercise
+docker run ubuntu:14.04
+docker run ubuntu:latest
+docker run ubuntu
+
+# Run processes in the ccontainer
+docker run ubuntu bash
+docker run ubuntu sleep
+
+# Add options 
+docker run -ti ubuntu bash		# interactive mode
+exit							# exit from interactive modeh
+docker run --rm -ti ubuntu bash	# auto exit
+docker run ubuntu bash -c "sleep 3;echo done"	# execute bash command
+
+# Check cotntainers
+docker ps -a
+
+# Assgin name to container
+docker run --name demo ubuntu bash -c "echo done"
+
+# Check log
+docker run --name demo -d bash -c "echo done"
+docker logs
+
+# Stop a container
+docker stop afeff3c4dad3
+
+# Stop all containers
+docker stop $(docker ps -a -q)
+
+# Remove a container
+docker rm afeff3c4dad3
+
+# Remove all containers
+docker rm $(docker ps -a -q)
+
+# Creating image from container
+docker commit 91ea3c86bc74
+docker tag f22bd1a2603c9bcd820a59b5720d66b30a3777a8efa907c2b4cc97d1b5a4e30e test5:v1
+
+# Search images
+docker search ubuntu
+
+# Login to Docker Hub
+docker login
+
+# Push images
+docker tag  ubuntu:14.04 tertiaryinfotech/test-ubuntu:v1.0
+docker push  tertiaryinfotech/test-ubuntu:v1.0
+

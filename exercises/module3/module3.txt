@@ -1,0 +1,26 @@
+# Docker Essential Training
+# Module 3: Docker Networking
+
+# List networks
+docker network ls 
+
+# Map ports
+run -p 1234:1234 -ti ubuntu:14.04 
+nc -lp 1234
+
+nc localhost 1234
+sending data
+
+# Exercise
+docker run -p 1234:1234 -p 4567:4567 -ti ubuntu:14.04
+nc -lp 1234 | nc -lp 4567
+
+#Open 2nd terminal
+nc localhost 1234
+
+#Open 3rd termial
+nc localhost 4567
+
+# Sharing Data
+docker run -ti -v /Users/alfred/example ubuntu bash
+
