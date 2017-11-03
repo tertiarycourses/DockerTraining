@@ -1,4 +1,4 @@
-# ocker Essential Training
+# Docker Essential Training
 ## by [Tertiary Infotech Pte. Ltd](https://www.tertiarycourses.com.sg/)
 
 These are the exercise files used for [Pocker Essential Training](https://www.tertiarycourses.com.sg/docker-essential-training.html) course. 
