@@ -1,7 +1,7 @@
 # Docker Essential Training
 ## by [Tertiary Infotech Pte. Ltd](https://www.tertiarycourses.com.sg/)
 
-These are the exercise files used for [Pocker Essential Training](https://www.tertiarycourses.com.sg/docker-essential-training.html) course. 
+These are the exercise files used for [Docker Essential Training](https://www.tertiarycourses.com.sg/docker-essential-training.html) course. 
 
 The course outline can be found in 
 
