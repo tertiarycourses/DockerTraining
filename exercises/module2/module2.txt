@@ -1,59 +1,97 @@
 # Docker Essential Training
-# Module 2: Docker Images and Containers
-
+# Module 2: Docker Container and Image
 
 # Run a container from image
 docker run hello-world
 
-# Check docker images
-docker images
-
-# Duplicating image
-docker tag dea1945146b9 test3
+# List docker processes
+docker ps -a
+docker ps
 
 # Exercise
 docker run ubuntu:14.04
 docker run ubuntu:latest
 docker run ubuntu
 
-# Run processes in the ccontainer
-docker run ubuntu bash
-docker run ubuntu sleep
+# Remove Option
+docker run --rm run hello-world
 
-# Add options 
-docker run -ti ubuntu bash		# interactive mode
-exit							# exit from interactive modeh
-docker run --rm -ti ubuntu bash	# auto exit
-docker run ubuntu bash -c "sleep 3;echo done"	# execute bash command
+# Name Option
+docker run --rm --name "Hello" hello-wolrd
 
-# Check cotntainers
+# Exercise 
+docker run ubuntu:14.04
 docker ps -a
+docker rm [containerID]
 
-# Assgin name to container
-docker run --name demo ubuntu bash -c "echo done"
+# Check Docker images
+docker images
 
-# Check log
-docker run --name demo -d bash -c "echo done"
-docker logs
+# Duplicating image
+docker tag [imageID] test3
+
+# Ex: Docker images
+docker run ubuntu:14.04
+docker rm [containID]
+docker images
+docker rmi -f [imageID]
+
+# Ex: Multiple Docker containers
+docker run ubuntu:14.04
+docker run ubuntu:14.04
+docker run ubuntu:14.04
+docker ps -a 
+
+# Container Life Cycle
 
 # Stop a container
-docker stop afeff3c4dad3
+docker stop [ContainerID]
 
 # Stop all containers
 docker stop $(docker ps -a -q)
 
 # Remove a container
-docker rm afeff3c4dad3
+docker rm [ContainerID]
 
 # Remove all containers
-docker rm $(docker ps -a -q)
+docker rm -f $(docker ps -a -q)
 
-# Creating image from container
-docker commit 91ea3c86bc74
-docker tag f22bd1a2603c9bcd820a59b5720d66b30a3777a8efa907c2b4cc97d1b5a4e30e test5:v1
+# Ex: Container Life Cycle
+docker run -it ubuntu bash
+docker pause [container ID]
+docker unpause [container ID]
+docker stop [container ID]
+docker restart [container ID]
+docker kill [container ID]
+
+# Container Command
+docker run -it ubuntu bash
+docker run --name demo -d bash -c "echo done"
+docker run ubuntu bash -c "sleep 3;echo done"
+
+# Ex: Container Command
+docker run -it ubuntu bash
+cd home
+touch test
+docker apt-get update
+apt-get -y upgrade
+apt-get install -y python3-pip 
+python3
 
 # Search images
 docker search ubuntu
+docker search python
+
+# Pull images
+docker pull nginx
+
+# Ex: Pull Python image
+docker pull python
+docker run -it --rm python
+
+# Creating image from container
+docker commit [ContaineID]
+docker tag [imageID] hello:1.0
 
 # Login to Docker Hub
 docker login
@@ -61,4 +99,12 @@ docker login
 # Push images
 docker tag  ubuntu:14.04 tertiaryinfotech/test-ubuntu:v1.0
 docker push  tertiaryinfotech/test-ubuntu:v1.0
+
+# Ex: Install a web server on ubuntu
+apt-get update
+apt-get install apache2
+apt-get install php5
+apt-get install mysql-server
+apt-get install php5-mysql
+
 

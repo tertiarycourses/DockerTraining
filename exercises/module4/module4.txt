@@ -1,22 +1,36 @@
 # Docker Essential Training
-# Module 4: Build Docker Files
+# Module 4: Docker Networking
 
-# Steps to create Docker file
-mkdir example
-cd example
+# List networks
+docker network ls 
 
-nano Dockerfile
+# Port Binding
+# Open 1st terminal (container)
+docker run --rm -it -p 1234:1234 ubuntu:14.04 
+nc -lp 1234
+# Open 2nd terminal (host)
+nc localhost 1234
+sending data
 
-FROM debian:sid
-RUN echo "building simple docker image"
-CMD echo "Hello Container"
+# Ex: Port Binding
+docker run --rm -it -p 1234:1234 -p 4567:4567 -it ubuntu:14.04
+nc -lp 1234 | nc -lp 4567
 
-docker build -t hello .
+#Open 2nd terminal
+nc localhost 1234
 
-docker run hello
+#Open 3rd termial
+nc localhost 4567
 
-# Exercise
-FROM debian:sid
-RUN apt-get -y update 
-RUN apt-get install nano
-CMD ["/bin/nano", "/tmp/notes"]
+# Ex: Pull Tensorflow image
+docker pull tensorflow/tensorflow
+docker run --rm -it -p 8888:8888 tensorflow/tensorflow
+
+# Sharing Data from localhost 
+docker run --rm -it -v /example/test ubuntu:14.04 bash
+
+Ex: Python 
+docker run --rm -it -v "$PWD":/example2/test.py -w /example2 python:3 python test.py
+
+# Sharing Data between containers
+docker run --rm -it --volumes-from [containerID] ubuntu:14.04 bash
