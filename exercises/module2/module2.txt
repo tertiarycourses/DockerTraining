@@ -1,4 +1,4 @@
-# Docker Essential Training
+# Basic Docker Training
 # Module 2: Docker Container and Image
 
 # Run a container from image

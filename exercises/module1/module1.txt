@@ -1,4 +1,4 @@
-# Docker Essential Training
+# Basic Docker Training
 # Module 1: Get Started on Docker
 
 

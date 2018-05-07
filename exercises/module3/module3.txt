@@ -1,41 +1,36 @@
-# Docker Essential Training
-# Module 3: Build Docker Image
+# Basic Docker Training
+# Module 4: Docker Networking
 
-# Create Direcotry
-mkdir example
-cd example
+# List networks
+docker network ls 
 
-# Create Dockerfile
+# Port Binding
+# Open 1st terminal (container)
+docker run --rm -it -p 1234:1234 ubuntu:14.04 
+nc -lp 1234
+# Open 2nd terminal (host)
+nc localhost 1234
+sending data
 
-FROM ubuntu:14.04
-CMD echo "duplicating ubuntu image"
+# Ex: Port Binding
+docker run --rm -it -p 1234:1234 -p 4567:4567 -it ubuntu:14.04
+nc -lp 1234 | nc -lp 4567
 
-# Build Docker Image
-docker build -t myapp:1.0 .
+#Open 2nd terminal
+nc localhost 1234
 
-# Check Docker Image
-docker run -it hello:1.0
+#Open 3rd termial
+nc localhost 4567
 
-# Ex: Install Nano
-FROM ubuntu:14.04
+# Ex: Pull Tensorflow image
+docker pull tensorflow/tensorflow
+docker run --rm -it -p 8888:8888 tensorflow/tensorflow
 
-RUN apt-get -y update 
-RUN apt-get install nano
-CMD ["/bin/nano", "/tmp/notes"]
+# Sharing Data from localhost 
+docker run --rm -it -v /example/test ubuntu:14.04 bash
 
-# Ex: Create a Web Server Image 
-FROM ubuntu:14.04
+Ex: Python 
+docker run --rm -it -v "$PWD":/example2/test.py -w /example2 python:3 python test.py
 
-RUN apt-get update 
-RUN apt-get install -y apache2
-RUN apt-get install -y php5
-RUN apt-get install -y mysql-server
-RUN apt-get install -y php5-mysql
-
-EXPOSE 80
-
-CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
-
-
-
-
+# Sharing Data between containers
+docker run --rm -it --volumes-from [containerID] ubuntu:14.04 bash
