@@ -17,7 +17,13 @@ docker run ubuntu
 docker run --rm run hello-world
 
 # Name Option
-docker run --rm --name "Hello" hello-wolrd
+docker run --name "Hello" hello-wolrd
+
+# Detach Option
+docker run -d  hello-wolrd
+
+# Interactive Option
+docker run -it ubuntu:14.04
 
 # Exercise 
 docker run ubuntu:14.04
