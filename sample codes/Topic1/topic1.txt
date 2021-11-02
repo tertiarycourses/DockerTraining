@@ -1,0 +1,144 @@
+# Verify Docker
+docker info
+docker version
+docker version --format '{{.Server.Version}}'
+
+# Docker Image and Containers 
+docker images
+docker run ubuntu:14.04
+docker tag [imageID] test3
+docker rm [containerID]
+docker rmi -f [imageID]
+
+# List docker processes
+docker ps -a
+docker ps
+
+# Login to Docker Hub
+docker login
+
+# Search and Pull images
+docker search ubuntu
+docker search python
+docker pull nginx
+docker pull python
+docker run -it --rm python
+
+# Activity:
+docker pull hello-world
+docker pull ubuntu
+docker images
+docker run hello-world
+docker run -it ubuntu:latest
+
+# Option
+docker run --rm run hello-world
+docker run --name "Hello" hello-wolrd
+docker run -d  hello-wolrd
+docker run -it ubuntu:14.04
+
+# Container Life Cycle
+docker stop [ContainerID]
+docker stop $(docker ps -a -q)
+docker rm [ContainerID]
+docker rm -f $(docker ps -a -q)
+
+# Activity: Container Life Cycle
+docker run -it ubuntu bash
+docker pause [container ID]
+docker unpause [container ID]
+docker stop [container ID]
+docker restart [container ID]
+docker kill [container ID]
+
+# A Simple DockerFile Example
+FROM ubuntu:latest
+CMD echo "duplicated a ubuntu image"
+
+# Activity: Docker Build
+docker build -t myapp0 .
+docker run -myapp0 
+
+
+# Install Python
+FROM ubuntu:latest
+RUN apt update && apt install -y python3
+
+Activity: Install Python
+docker build -t myapp .
+docker run -it myapp 
+python3
+
+# Activity: Port
+docker pull tensorflow/tensorflow
+docker run -it -p 8888:8888 tensorflow/tensorflow
+python3
+
+# Activity: Web Server
+docker pull nginx
+docker run -d -p 4000:80 --name webserver nginx
+
+http://localhost:4000/
+
+import tensorflow as tf
+tf.__version__
+
+
+# Docker File with Volume and Expos
+FROM python:3.7.3
+LABEL maintainer="Test Test <test@gmail.com>"
+LABEL version="0.1"
+LABEL description="Test"
+
+WORKDIR /data
+
+RUN pip install numpy pandas==0.24.2  seaborn==0.9.0 jupyter
+
+EXPOSE 8888
+
+CMD ["jupyter","notebook","--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+
+# Activity: Docker Networking
+docker build -t myapp2 .
+docker run -it -v "$PWD":/data" -p 8888:8888 myapp2
+
+import pandas as pd
+df = pd.read_csv("olympics.csv")
+df
+
+http://127.0.0.1:8888/?token=<token>
+
+
+
+# Creating image from container
+docker commit [ContaineID]
+docker tag [imageID] hello:1.0
+
+
+# Push images
+docker tag  ubuntu:14.04 tertiaryinfotech/test-ubuntu:v1.0
+docker push  tertiaryinfotech/test-ubuntu:v1.0
+
+
+docker run -it -v "$PWD":/data/test.py -w /data myapp 
+# List networks
+docker network ls 
+
+# Port Binding
+docker run -d -p 4000:80 --name webserver nginx
+
+# Ex: Pull Tensorflow image
+docker pull tensorflow/tensorflow
+docker run --rm -it -p 8888:8888 tensorflow/tensorflow
+
+# Sharing Data from localhost 
+docker run --rm -it -v /example/test ubuntu:14.04 bash
+
+Ex: Python 
+docker run --rm -it -v "$PWD":/data/test.py -w /example2 python:3 python test.py
+
+# Sharing Data between containers
+docker run --rm -it --volumes-from [containerID] ubuntu:14.04 bash
+
+
+

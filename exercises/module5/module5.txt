@@ -1,6 +1,0 @@
-# Basic Docker Training
-# Module 5: Docker Composer
-
-
-$ mkdir composetest
-$ cd composetest

@@ -1,6 +1,0 @@
-# Basic Docker Training
-# Module 1: Get Started on Docker
-
-
-# Check docker
-docker version
