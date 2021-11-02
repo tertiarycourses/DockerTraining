@@ -1,5 +1,5 @@
-# Docker Essential Training
-## by [Tertiary Infotech Pte. Ltd](https://www.tertiarycourses.com.sg/)
+# Basic Docker Training
+## by [Tertiary Courses](https://www.tertiarycourses.com.sg/)
 
 These are the exercise files used for [Docker Essential Training](https://www.tertiarycourses.com.sg/docker-essential-training.html) course. 
 
@@ -9,29 +9,17 @@ https://www.tertiarycourses.com.sg/docker-essential-training.html
 
 https://www.tertiarycourses.com.my/docker-essential-training-malaysia.html
 
-<p><strong>Module 1 Get Started on Docker</strong></p>
+<p><strong>Topic 1 Fundamental of Docker</strong></p>
 <ul>
-<li>What is Docker</li>
-<li>What is Container</li>
-<li>Install Docker</li>
-<li>Run Docker</li>
+<li>Overview of Docker and Containers</li>
+<li>Install Docker Desktop and Dashboard</li>
+<li>Docker Hub</li>
+<li>Common Docker Command Lines</li>
+<li>Docker Networking</li>
+<li>Create Single Container Docker App with Dockerfile</li>
 </ul>
-<p><strong>Module 2 Docker Image and Container</strong></p>
+<p><strong>Topic 2 Docker Compose and Docker Swarm</strong></p>
 <ul>
-<li>Docker Image</li>
-<li>Create Container from Image</li>
-<li>Run Processes in Container</li>
-<li>Stop and Kill Container</li>
-<li>Remove Container</li>
-<li>Create Image from Container</li>
-</ul>
-<p><strong>Module 3 Docker Networking</strong></p>
-<ul>
-<li>Managing Ports</li>
-<li>Map Ports</li>
-<li>Sharing Data via Volume</li>
-</ul>
-<p><strong>Module 4 Build Docker Files</strong></p>
-<ul>
-<li>Steps to Build Files</li>
+<li>Create Multiple Containers Docker App with Docker Compose</li>
+<li>Orchestra Multiple Nodes with Docker Swarm</li>
 </ul>
