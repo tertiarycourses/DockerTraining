@@ -1,4 +1,4 @@
-# Fll Docker Training
+# Full Docker Training
 ## by [Tertiary Courses](https://www.tertiarycourses.com.sg/)
 
 These are the exercise files used for [Docker Essential Training](https://www.tertiarycourses.com.sg/docker-essential-training.html) course. 
