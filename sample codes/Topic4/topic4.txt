@@ -1,0 +1,35 @@
+docker run -dit --name alpine1 alpine ash
+docker run -dit --name alpine2 alpine ash
+
+docker network inspect bridge
+
+docker attach alpine1
+ping -c 2 google.com
+ping -c 2 172.17.0.3
+
+docker container stop alpine1 alpine2
+docker container rm alpine1 alpine2
+
+# Activity: Networking with Swarm Containers
+
+docker swarm init --advertise-addr $(hostname -i) 
+docker swarm join-token worker
+docker node ls
+docker network ls
+docker network create -d overlay nginx-net
+docker service create \
+  --name my-nginx \
+  --publish target=80,published=80 \
+  --replicas=5 \
+  --network nginx-net \
+  nginx
+
+# Activity: Networking with Swarm Containers
+docker network create -d overlay nginx-net-2
+docker service update \
+  --network-add nginx-net-2 \
+  --network-rm nginx-net \
+  my-nginx
+docker service ls 
+docker network inspect nginx-net
+docker network inspect nginx-net-2

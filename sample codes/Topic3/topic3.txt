@@ -1,0 +1,43 @@
+docker swarm init
+docker node ls
+
+docker swarm join 
+docker swarm join --token manager/worker
+docker swarm join-token manager/worker
+
+docker swarm leave 
+docker swarm leave --force
+
+# Activity: Voting App
+git clone https://github.com/docker/example-voting-app
+docker swarm init --advertise-addr $(hostname -i)
+docker swarm join-token worker
+docker node ls
+
+docker service create --replicas 1 --name helloworld alpine ping docker.com
+
+docker service inspect --pretty helloworld
+docker service scale helloworld=5
+docker service ps helloworld
+docker service rm helloworld
+
+Activity: Docker Service
+docker service create --name webapp1 --replica=6 nginx
+docker service ls
+
+# Docker Stack
+docker swarm init
+docker service create --name registry --publish published=5000, target=5000 registry:2
+docker service ls
+docker stack deploy --compose-file docker-compose.yml stackdemo
+docker stack services stackdemo
+curl http://localhost:8000
+docker stack rm stackdemo
+docker service rm registry
+docker swarm leave --force
+
+kubectl get nodes
+kubectl apply -f pod.yaml
+kubectl get pods
+kubectl logs demo
+kubectl delete -f pod.yaml

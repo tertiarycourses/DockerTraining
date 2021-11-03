@@ -1,29 +1,21 @@
-# Ex: Create a Web Server Image 
-FROM ubuntu:14.04
-RUN apt-get update 
-RUN apt-get install -y apache2
-RUN apt-get install -y php5
-RUN apt-get install -y mysql-server
-RUN apt-get install -y php5-mysql
-EXPOSE 80
-CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
+# Activity: Docker Compose 1
+docker-compose up
+docker-compose down
 
-# Ex: Create a Flask Web App
-FROM python:latest
-WORKDIR /app
-ADD . /app
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
-EXPOSE 80 
-ENV NAME World
-CMD ["python", "app.py"]
+# Activity: Docker Compose 2
+docker-compose up
+docker-compose down
 
-# Ex: Install Nano
-FROM ubuntu:14.04
+# Activity: Binding with Volume
+docker-compose up
+url http://localhost:5000
+docker-compose down
 
-RUN apt-get -y update 
-RUN apt-get install nano
-CMD ["/bin/nano", "/tmp/notes"]
+# Activity: Install Wordpress 
+docker-compose up
+docker-compose down
 
+# Activity: Voting App
+docker-compose up
+docker-compose down
 
-$ mkdir composetest
-$ cd composetest
