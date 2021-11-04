@@ -2,7 +2,6 @@ docker swarm init
 docker node ls
 
 docker swarm join 
-docker swarm join --token manager/worker
 docker swarm join-token manager/worker
 
 docker swarm leave 
